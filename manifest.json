@@ -1,0 +1,22 @@
+{
+    "required_api_version": "^2.0.0",
+    "name": "AppImage launcher",
+    "description": "launch your AppImages",
+    "developer_name": "Alejandro Torres",
+    "icon": "images/icon.png",
+    "preferences": [
+        {
+            "id": "ailauncher_kw",
+            "type": "keyword",
+            "name": "AppImage launcher",
+            "default_value": "ai"
+        },
+        {
+            "id": "ailauncher_directories",
+            "type": "input",
+            "name": "AppImage directories",
+            "default_value": "~/AppImages",
+            "description": "Paths to search for AppImages, separated by commas"
+        }
+    ]
+}
