@@ -55,6 +55,8 @@ class KeywordQueryEventListener(EventListener):
                             app_images.append(os.path.join(root, file))
         if (len(app_images) == 0):
             extension.show_notification("Error", "No AppImages found in the configured directories", icon=ext_icon)
+        if event.get_argument():
+            app_images = self.filter_strings(app_images, event.get_argument())
         for app_image in app_images:
             yield ExtensionResultItem(
                 icon='images/icon.png',
@@ -62,6 +64,14 @@ class KeywordQueryEventListener(EventListener):
                 description='Launch {}'.format(os.path.basename(app_image)),
                 on_enter=ExtensionCustomAction(app_image)
             )
+
+    def filter_strings(event,strings, filter_text):
+        filtered_strings = []
+        for string in strings:
+            if filter_text.lower() in string.lower():
+                filtered_strings.append(string)
+        
+        return filtered_strings
 
 
 class ItemEnterEventListener(EventListener):
